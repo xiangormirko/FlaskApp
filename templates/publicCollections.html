@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class="jumbotron">
+    <div class="container text-center">
+        <h1>Collections</h1>
+    </div>
+	</div>
+
+	<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}      
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+
+	
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 padding-none">
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+
+	<div class='container'>
+	{% for collection in collections %}
+		<a href = "{{url_for('showItems', collection_id = collection.id)}}">
+				<div class="col-sm-6 col-md-4 text-center">
+					<div class="thumbnail">
+						{% if collection.t_pic%}
+						<img src="{{ url_for('static', filename= collection.t_pic)}}">
+						{% else %}
+						<img src="{{ url_for('static', filename='2d.png') }}">
+						{% endif %}
+						<div class='caption'>
+							<h3>{{collection.name}}</h3>
+						</div>
+					</div>
+				</div>
+		</a>
+
+
+	{% endfor %}
+	</div>
+	{% endblock %}
