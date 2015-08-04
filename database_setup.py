@@ -89,6 +89,6 @@ class CollectionItem(Base):
 # sqlalchemy_utils.functions.drop_database('sqlite:///ecommerce.db')
 # print "An older database has been dropped"
 
-engine = create_engine('sqlite:///ecommerce.db')
+engine = create_engine('postgresql://mirko:holasenor@localhost/ecommercepsql')
 
 Base.metadata.create_all(engine)

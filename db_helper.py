@@ -4,7 +4,7 @@ from database_setup import Collection, Base, CollectionItem, User
 from flask import session as login_session
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:///ecommerce.db')
+engine = create_engine('postgresql://mirko:holasenor@localhost/ecommercepsql')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
